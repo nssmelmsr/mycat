@@ -1,0 +1,1 @@
+agregar opciones extra como conteo de linea o mostrar head y tail.

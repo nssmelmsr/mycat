@@ -1,7 +1,16 @@
-# Very simple alternative for cat
+# mycat
 
-#To Do
+Simple reimplementation of the Linux cat command using POSIX syscalls.
 
-add for cicle to read multiple files
+## Features
+- open()
+- read()
+- write()
 
-add options
+## Build
+
+gcc mycat.c -o mycat
+
+## Usage
+
+./mycat file.txt
