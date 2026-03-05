@@ -9,27 +9,30 @@ int main(int argc, char *argv[]){ // argc cuenta los argumentos
 	ssize_t bytes_read;  	// 
 	
 	if (argv[1] == NULL){
-		fprintf(stderr,"Please choose a file\n",argv[0]);
-		return 0;
+		fprintf(stderr,"Please choose a file\n",argv[0]); //show custom error 
+		return 1;
 	}
 	else{
-		//filename = argv[1];
+		
 		printf("Showing file: %s\n", argv[1]);
 		fd = open(argv[1], O_RDONLY); //Open for read only
 		if (fd == -1){
-			perror("open");
-			return 0;
+			perror("Error openning file");    // perror shows the error code of the syscall
+			return 1;
 		}
 		
-		while ((bytes_read = read(fd, buffer, sizeof(buffer) -1)) > 0){//lee cada caracter del archivo
-			write(STDOUT_FILENO, buffer, bytes_read);
+		while ((bytes_read = read(fd, buffer, sizeof(buffer))) > 0){//lee cada caracter del archivo
+			ssize_t written = write(STDOUT_FILENO, buffer, bytes_read);
+			if (written == -1){
+			perror("Error writing");
+			return 1;
+			}
 		}
 		if (bytes_read == -1){
-			perror("reading file");
+			perror("Error reading file");
 			close(fd);
-			return 0;
+			return 1;
 		}
-		//printf("%s\n",buffer);
 		close(fd);
 		return 0;
 	}
