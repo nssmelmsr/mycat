@@ -9,7 +9,7 @@ int main(int argc, char *argv[]){ // argc cuenta los argumentos
 	ssize_t bytes_read;  	// 
 	
 	if (argc < 2){
-		fprintf(stderr,"Please choose a file\n",argv[0]); //show custom error 
+		fprintf(stderr,"Please choose a file\n"); //show custom error 
 		return 1;
 	}
 	else{
