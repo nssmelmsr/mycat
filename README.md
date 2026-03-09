@@ -8,7 +8,9 @@ Simple reimplementation of the Linux cat command using POSIX syscalls.
 - write()
 
 ## Build
+built makefile with debug flag, use make to build
 
+If you don't want debug informatin in file, use:
 gcc mycat.c -o mycat
 
 ## Usage
